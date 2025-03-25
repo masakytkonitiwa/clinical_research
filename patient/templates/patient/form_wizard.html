@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>患者情報入力</title>
+</head>
+<body>
+    <h2>患者情報入力（ステップ {{ wizard.steps.step1 }} / {{ wizard.steps.count }}）</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ wizard.management_form }}
+        
+        {% if wizard.form.forms %}
+            {{ wizard.form.management_form }}
+            {% for form in wizard.form.forms %}
+                {{ form.as_p }}
+            {% endfor %}
+        {% else %}
+            {{ wizard.form.as_p }}
+        {% endif %}
+    
+        <div>
+            {% if wizard.steps.prev %}  <!-- 前のステップがあれば「戻る」ボタンを表示 -->
+            <button type="submit" name="wizard_goto_step" value="{{ wizard.steps.prev }}">戻る</button>
+            {% endif %}
+            <button type="submit">次へ</button>
+        </div>
+    </form>
+</body>
+</html>

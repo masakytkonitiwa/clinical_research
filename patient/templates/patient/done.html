@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登録完了</title>
+</head>
+<body>
+    <h2>患者情報の登録が完了しました</h2>
+    <p><strong>患者ID:</strong> {{ data.patient_id}}</p>
+    <p><strong>年齢:</strong> {{ data.age }}</p>
+    <p><strong>性別:</strong> {{ data.gender }}</p>
+    <p><strong>診断内容:</strong> {{ data.diagnosis }}</p>
+    <p><strong>koumoku1:</strong> {{ data.koumoku1 }}</p>
+    <a href="{% url 'patient_wizard' %}">新しい患者を登録</a>
+    <a href="{% url 'patient_list' %}">患者リストを見る</a>
+
+    <button onclick="window.history.back();">戻る</button>
+
+</body>
+</html>
+
+

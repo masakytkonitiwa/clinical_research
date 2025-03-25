@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>患者リスト</title>
+</head>
+<body>
+    <h1>登録済みリスト</h1>
+    <table border="1">
+        <tr>
+            <th></th>
+            <th>患者id</th>
+            <th>年齢</th>
+            <th>性別</th>
+            <th>診断</th>
+            
+            <th>項目1</th>
+            <th>作成日時</th>
+        </tr>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient.pk }}</td>
+            <td>{{ patient.patient_id }}</td>
+            <td>{{ patient.age }}</td>
+            <td>{{ patient.gender }}</td>
+            <td>{{ patient.diagnosis }}</td>
+            <td>{{ patient.koumoku1 }}</td>
+            <td>{{ patient.created_at|date:"Y-m-d H:i" }}</td>
+            <td><a href="{% url 'patient_edit' patient.pk %}">編集</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'patient_wizard' %}">新しい患者を登録</a>
+</body>
+</html>
